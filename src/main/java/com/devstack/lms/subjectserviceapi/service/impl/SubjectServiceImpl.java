@@ -26,7 +26,12 @@ public class SubjectServiceImpl implements SubjectService {
     }
 
     public boolean isListAvailable(List<Long> ids) {
-        subjectRepository.findByIdIn(ids).forEach(e -> System.out.println(e.getName()));
-        return false;
+        for (Subject sub:subjectRepository.findByIdIn(ids)
+             ) {
+            if(!sub.isStatus()){
+                return false;
+            }
+        }
+        return true;
     }
 }
