@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -21,5 +23,10 @@ public class SubjectServiceImpl implements SubjectService {
                 .name(dto.getName())
                 .status(dto.isStatus()).build();
         subjectRepository.save(subject);
+    }
+
+    public boolean isListAvailable(List<Long> ids) {
+        subjectRepository.findByIdIn(ids).forEach(e -> System.out.println(e.getName()));
+        return false;
     }
 }
