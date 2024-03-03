@@ -1,10 +1,7 @@
 package com.devstack.lms.subjectserviceapi.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "subject")
@@ -12,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Subject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
